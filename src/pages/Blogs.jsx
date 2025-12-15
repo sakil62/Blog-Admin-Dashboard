@@ -8,7 +8,6 @@ import { useLocalStorage } from "../hooks/useLocalStorage"
 import { BLOG_CATEGORIES, BLOG_STATUS } from "../utils/constants"
 import Footer from "../components/Footer"
 
-
 export default function Blogs() {
   // persistent blogs
   const [blogs, setBlogs] = useLocalStorage("blogs", [])
@@ -20,6 +19,9 @@ export default function Blogs() {
   const [search, setSearch] = useState("")
   const [category, setCategory] = useState("")
   const [status, setStatus] = useState("")
+
+  // ✅ sidebar toggle (desktop + mobile)
+  const [open, setOpen] = useState(true)
 
   /* ===============================
      SOFT DELETE AUTO PURGE (24 hrs)
@@ -76,12 +78,14 @@ export default function Blogs() {
 
   return (
     <div className="flex min-h-screen bg-gray-100">
-      <Sidebar />
+      {/* ✅ sidebar controlled by width toggle */}
+      <Sidebar open={open} />
 
       <div className="flex-1 flex flex-col">
-        <Navbar />
+        {/* ✅ button toggles sidebar */}
+        <Navbar open={open} setOpen={setOpen} />
 
-        <main className="p-6">
+        <main className="flex-1 p-6">
           {/* BLOG FORM */}
           <BlogForm onSave={addBlog} />
 
@@ -142,8 +146,10 @@ export default function Blogs() {
             page={page}
             setPage={setPage}
           />
-          <Footer />
         </main>
+
+        {/* ✅ footer fixed to bottom */}
+        <Footer />
       </div>
     </div>
   )
