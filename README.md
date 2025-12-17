@@ -4,7 +4,7 @@ A production-style Blog Admin Dashboard built using React, Vite, and Tailwind CS
 
 🔗 Live Project
 
-Live URL:(https://blog-admin-dashboard-one.vercel.app/)
+Live URL:(https://blog-admin-dashboard-alpha.vercel.app/)
 
 🎥 Demo Video
 
