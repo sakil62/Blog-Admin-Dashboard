@@ -114,7 +114,13 @@ export default function BlogForm({ onSave }) {
         ))}
       </select>
 
+      {/* Image upload */}
       <input type="file" accept="image/*" onChange={handleImage} />
+
+      {/* ✅ Visible 1MB disclaimer */}
+      <p className="text-red-500 text-xs mt-1">
+        * Image size must be less than 1 MB
+      </p>
 
       {form.preview && (
         <img
